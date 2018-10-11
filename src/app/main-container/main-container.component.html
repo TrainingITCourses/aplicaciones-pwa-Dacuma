@@ -1,0 +1,8 @@
+<p *ngIf="isLoading">
+  Cargando... por favor espere.
+</p>
+<div *ngIf="!isLoading">
+  <h2 class="title">Lista de lanzamientos (Uso de NgSW)</h2>
+  <dcm-search></dcm-search>
+  <dcm-display></dcm-display>
+</div>

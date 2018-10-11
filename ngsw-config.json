@@ -1,0 +1,57 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/icons/**"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Roboto"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "cache-first",
+      "urls": [
+        "http://127.0.0.1:8080/assets/launchagencies.json",
+        "http://127.0.0.1:8080/assets/launchmissions.json",
+        "http://127.0.0.1:8080/assets/launchstatus.json"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxsize": 10,
+        "maxAge": "1d"
+      }
+    },
+    {
+      "name": "api-first",
+      "urls": [
+        "http://127.0.0.1:8080/assets/launchlibrary.json"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxsize": 100,
+        "maxAge": "1h",
+        "timeout": "3s"
+      }
+    }
+  ]
+}
