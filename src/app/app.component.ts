@@ -7,7 +7,10 @@ import { UpdateAvailableEvent } from '@angular/service-worker/src/low_level';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  constructor(swUpdate: SwUpdate, swPush: SwPush) {
+
+  public version = '2.0';
+
+  constructor(private swUpdate: SwUpdate) {
     if (swUpdate.isEnabled) {
       swUpdate.available.subscribe(
         (event: UpdateAvailableEvent) => {
@@ -21,4 +24,15 @@ export class AppComponent {
       );
     }
   }
+
+  checkForUpdate() {
+    this.swUpdate.checkForUpdate()
+      .then(() => {
+        console.log('Log from Check for Update');
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
 }
